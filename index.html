@@ -11,31 +11,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></head>
     <link rel="stylesheet" href="./css/main.css">
 <body>
-    <h1>Calculator</h1>
-    <input id="input" type="text" disabled> <br/>
-
-    <button class="btn">1</button>
-    <button class="btn">2</button>
-    <button class="btn">3</button>
-    <button class="add">+</button> <br/>
-    <button class="btn">4</button>
-    <button class="btn">5</button>
-    <button class="btn">6</button>
-    <button class="sub">-</button> <br/>
-    <button class="btn">7</button>
-    <button class="btn">8</button>
-    <button class="btn">9</button>
-    <button class="div">/</button> <br/>
-    <button class="btn">0</button>
-    <button class="dec">.</button>
-    <button class="mul">*</button>
-    <button id="calc">=</button> <br/><br/>
-
-    <span id="result"></span>
-
-    <span id="numberone"></span>
-    <span id="numbertwo"></span>   
-
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Calculator</h1>
+      </div>
+      <div class="col-12">
+        <input id="input" type="text" disabled>
+      </div>
+      <div class="col-12">
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="add">+</button>
+      </div>
+      <div class="col-12">
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="sub">-</button>
+      </div>
+      <div class="col-12">
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+        <button class="div">/</button>
+      </div>
+      <div class="col-12">
+        <button class="btn">0</button>
+        <button class="dec">.</button>
+        <button class="mul">*</button>
+        <button id="calc">=</button>
+        <button class="clr">C</button>
+      </div>
+      <div class="col-12">
+        <span id="result"></span> <br/>
+        <span id="numberone"></span> <br/>
+      </div>
+    </div>
+  </div>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 
     <script>
@@ -43,7 +57,7 @@
         var num2 = null;
         var status = null;
         var result = null;
-        var dotchk = true
+        var dotchk = true;
 
         // Button click --> input
         $('.btn').click(function(){
@@ -106,8 +120,6 @@
                 dotchk = true;
             }
         });
-
-
         // Calculation function with SWITCH CASES
         $('#calc').click(function(){
             num2 = $('#input').val();
@@ -115,6 +127,7 @@
                 alert("Voer het tweede getal eerst in!");
             }
             else{
+              dotchk = true
                 switch (status){
                     case "plus":
                     result = +num1 + +num2;
@@ -143,6 +156,11 @@
                 }
             }
         });
+        $('.clr').click(function(){
+            $('#input').val("");
+            $('#numberone').text("");
+            $('#result').text("");
+        })
     </script>
 </body>
 </html>
