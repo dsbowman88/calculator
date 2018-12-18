@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/main.css">
 <body>
     <h1>Calculator</h1>
-    <input id="input" type="number" disabled> <br/>
+    <input id="input" type="text" disabled> <br/>
 
     <button class="btn">1</button>
     <button class="btn">2</button>
@@ -27,29 +27,32 @@
     <button class="btn">9</button>
     <button class="div">/</button> <br/>
     <button class="btn">0</button>
-    <button class="dot">.</button>
+    <button class="dec">.</button>
     <button class="mul">*</button>
-    <button id="calc">=</button>
+    <button id="calc">=</button> <br/><br/>
 
-    <p id="result"></p>
+    <span id="result"></span>
 
-    <p id="numberone"></p>
-    <p id="numbertwo"></p>   
+    <span id="numberone"></span>
+    <span id="numbertwo"></span>   
 
-    <script type="text/javascript" src="Script/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="script/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
 
     <script>
         var num1 = null;
         var num2 = null;
         var status = null;
         var result = null;
+        var dotchk = true
 
         // Button click --> input
         $('.btn').click(function(){
-            $('#input').val($('#input').val() + this.innerHTML);
+          $('#input').val($('#input').val() + this.innerHTML);
+        });
+        // Decimal button with validation
+        $('.dec').click(function(){
+          if(dotchk)$('#input').val($('#input').val() + this.innerHTML);
+          dotchk = false
         });
         // add button click with validation
         $('.add').click(function(){
@@ -58,9 +61,10 @@
                 alert("Voer eerst een getal in!");
             }
             else{
-                $('#numberone').text(num1);
+                $('#numberone').text(num1 + " +");
                 $('#input').val("");
                 status = "plus";
+                dotchk = true;
             }
         });
         // div button click with validation
@@ -70,9 +74,10 @@
                 alert("Voer eerst een getal in!");
             }
             else{
-                $('#numberone').text(num1);
+                $('#numberone').text(num1 + " /");
                 $('#input').val("");
                 status = "div";
+                dotchk = true;
             }
         });
         // mul button click with validation
@@ -82,9 +87,10 @@
                 alert("Voer eerst een getal in!");
             }
             else{
-                $('#numberone').text(num1);
+                $('#numberone').text(num1 +  " *");
                 $('#input').val("");
                 status = "mul";
+                dotchk = true;
             }
         });
         // sub button with validation
@@ -94,11 +100,14 @@
                 alert("Voer eerst een getal in!");
             }
             else{
-                $('#numberone').text(num1);
+                $('#numberone').text(num1 + " -");
                 $('#input').val("");
                 status = "sub";
+                dotchk = true;
             }
         });
+
+
         // Calculation function with SWITCH CASES
         $('#calc').click(function(){
             num2 = $('#input').val();
@@ -109,29 +118,28 @@
                 switch (status){
                     case "plus":
                     result = +num1 + +num2;
-                    $('#result').text(result);
+                    $('#result').text(num1 + " + " + num2 + " = " + result);
                     $('#input').val("");
                     $('#numberone').text("");
                     break;
                     case "sub":
                     result = +num1 - +num2;
-                    $('#result').text(result);
+                    $('#result').text(num1 + " - " + num2 + " = " + result);
                     $('#input').val("");
                     $('#numberone').text("");
                     break;
                     case "mul":
                     result = +num1 * +num2;
-                    $('#result').text(result);
+                    $('#result').text(num1 + " * " + num2 + " = " + result);
                     $('#input').val("");
                     $('#numberone').text("");
                     break;
                     case "div":
                     result = +num1 / +num2;
-                    $('#result').text(result);
+                    $('#result').text(num1 + " / " + num2 + " = " + result);
                     $('#input').val("");
                     $('#numberone').text("");
                     break;
-                    
                 }
             }
         });
