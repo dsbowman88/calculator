@@ -17,32 +17,32 @@
         <h1>Calculator</h1>
       </div>
       <div class="col-12">
-        <input id="input" type="text" disabled>
+        <input id="input" type="text" maxlength="6" disabled>
       </div>
       <div class="col-12">
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
-        <button class="add">+</button>
+        <button class="numbtn btn btn-secondary">1</button>
+        <button class="numbtn btn btn-secondary">2</button>
+        <button class="numbtn btn btn-secondary">3</button>
+        <button class="add btn btn-outline-success">+</button>
       </div>
       <div class="col-12">
-        <button class="btn">4</button>
-        <button class="btn">5</button>
-        <button class="btn">6</button>
-        <button class="sub">-</button>
+        <button class="numbtn btn btn-secondary">4</button>
+        <button class="numbtn btn btn-secondary">5</button>
+        <button class="numbtn btn btn-secondary">6</button>
+        <button class="sub btn btn-outline-success">-</button>
       </div>
       <div class="col-12">
-        <button class="btn">7</button>
-        <button class="btn">8</button>
-        <button class="btn">9</button>
-        <button class="div">/</button>
+        <button class="numbtn btn btn-secondary">7</button>
+        <button class="numbtn btn btn-secondary">8</button>
+        <button class="numbtn btn btn-secondary">9</button>
+        <button class="div btn btn-outline-success">/</button>
       </div>
       <div class="col-12">
-        <button class="btn">0</button>
-        <button class="dec">.</button>
-        <button class="mul">*</button>
-        <button id="calc">=</button>
-        <button class="clr">C</button>
+        <button class="numbtn btn btn-secondary">0</button>
+        <button class="dec btn btn-outline-success">.</button>
+        <button class="mul btn btn-outline-success">*</button>
+        <button class="calc btn btn-outline-success" id="calc">=</button>
+        <button class="clr btn btn-outline-danger">C</button>
       </div>
       <div class="col-12">
         <span id="result"></span> <br/>
@@ -60,7 +60,7 @@
         var dotchk = true;
 
         // Button click --> input
-        $('.btn').click(function(){
+        $('.numbtn').click(function(){
           $('#input').val($('#input').val() + this.innerHTML);
         });
         // Decimal button with validation
